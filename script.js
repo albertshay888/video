@@ -26,32 +26,8 @@ drone.on('open', error => {
   if (error) {
     return console.error(error);
   }
-<<<<<<< HEAD
   room = drone.subscribe(roomName);
   room.on('open', error => {
-=======
-  const roomHash = location.hash.substring(1);
-  
-  // TODO: Replace with your own channel ID
-  const drone = new ScaleDrone('NzrcXSGok2BAFo5U');
-  // Room name needs to be prefixed with 'observable-'
-  const roomName = 'observable-' + roomHash;
-  const configuration = {
-    iceServers: [{
-      urls: 'stun:stun.l.google.com:19302'
-    }]
-  };
-  let room;
-  let pc;
-  
-  
-  function onSuccess() {};
-  function onError(error) {
-    console.error(error);
-  };
-  
-  drone.on('open', error => {
->>>>>>> 35e4cbfc0c6a65b0231b090d5520d071879f62f0
     if (error) {
       onError(error);
     }
@@ -91,7 +67,6 @@ function startWebRTC(isOfferer) {
       pc.createOffer().then(localDescCreated).catch(onError);
     }
   }
-<<<<<<< HEAD
 
   // When a remote stream arrives display it in the #remoteVideo element
   pc.ontrack = event => {
@@ -142,13 +117,3 @@ function localDescCreated(desc) {
     onError
   );
 }
-=======
-  
-  function localDescCreated(desc) {
-    pc.setLocalDescription(
-      desc,
-      () => sendMessage({'sdp': pc.localDescription}),
-      onError
-    );
-  }
->>>>>>> 35e4cbfc0c6a65b0231b090d5520d071879f62f0
